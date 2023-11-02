@@ -229,7 +229,12 @@ function App() {
             </div>
             <div className="modal-body">
               <form onSubmit={updatebooking}>
-                Room Number : <input type="number" name="room_number" value={roomNumber} style={{ margin: '0 2rem 1rem 0', width: '60%' }} onChange={(e) => setRoomNumber(e.currentTarget.value)} required /><br></br>
+                Room Number :
+                <select className="form-control" style={{ margin: '0 2rem 1rem 0' }} placeholder="Room Number" type="number" name="room_number" value={roomNumber} onChange={(e) => setRoomNumber(e.currentTarget.value)} required >
+                  {datar.length > 0 && datar.map((room) => {
+                    return <option key={room.room_id} value={room.room_id}>{room.room_id}</option>
+                  })}
+                </select><br></br>
                 email : <input type="email" name='email' value={email} style={{ margin: '0 2rem 1rem 0', width: '60%' }} onChange={(e) => setEmail(e.currentTarget.value)} required /><br></br>
                 start_time : <input type="datetime-local" name="start_time" value={startTime} style={{ margin: '0 2rem 1rem 0', width: '60%' }} onChange={(e) => setStartTime(e.currentTarget.value)} required /><br />
                 end_time :  <input type="datetime-local" name="end_time" value={endTime} style={{ margin: '0 2rem 1rem 0', width: '60%' }} onChange={(e) => setEndTime(e.currentTarget.value)} required /><br />
